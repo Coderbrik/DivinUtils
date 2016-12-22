@@ -8,8 +8,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import dr.rebate.main.Arithmetic;
+import dr.rebate.main.Messages;
 
-public class Playtime extends Arithmetic implements CommandExecutor {
+public class Playtime extends Messages implements CommandExecutor {
 
 	Player player;
 	public boolean onCommand(CommandSender cs, Command cm, String alias, String[] args) {
@@ -30,10 +31,10 @@ public class Playtime extends Arithmetic implements CommandExecutor {
 		if(Bukkit.getServer().getPlayer(playername) != null) {
 			Player player = Bukkit.getServer().getPlayer(playername);
 
-			time = super.convertTicksToTimeUnits(player.getStatistic(Statistic.PLAY_ONE_TICK) / 23);
-			time = super.formatPlaytime(time, playername, whoAsked);
+			time = Arithmetic.convertTicksToTimeUnits(player.getStatistic(Statistic.PLAY_ONE_TICK) / 23);
+			time = super.formatPlaytime(time, playername, whoAsked); 
 		}else{
-			time = "You are not allowed to check offline player's time.";
+			time = super.returnNoPlayer();
 		}
 		return time;
 	}

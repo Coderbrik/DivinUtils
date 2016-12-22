@@ -6,11 +6,11 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
 
-public class Arithmetic extends Formatting {
+public class Arithmetic {
 	ScriptEngineManager mgr = new ScriptEngineManager();
 	ScriptEngine engine = mgr.getEngineByName("JavaScript"); //script to solve arithmetic
 	
-	public String convertTicksToTimeUnits(long d) {
+	public static String convertTicksToTimeUnits(long d) {
 		String time = "";
 		// converts to time units
 		int day = (int) TimeUnit.SECONDS.toDays(d);

@@ -14,10 +14,11 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import dr.rebate.main.Formatting;
+import dr.rebate.main.FileOps;
+import dr.rebate.main.Messages;
 import dr.rebate.main.Startup;
 
-public class CommandSpy extends Formatting implements CommandExecutor, Listener {
+public class CommandSpy extends Messages implements CommandExecutor, Listener {
 	FileConfiguration conf = Startup.getPlugin().getConfig();
 	List<Player>spys = new ArrayList<Player>();
 
@@ -29,16 +30,16 @@ public class CommandSpy extends Formatting implements CommandExecutor, Listener 
 					spys.remove(player);
 
 					conf.set(player.getUniqueId().toString() + ".settings.cmspy", false);
-					super.saveConfig();
-					super.reloadConfig();
+					FileOps.saveConfig();
+					FileOps.reloadConfig();
 
 					cs.sendMessage(super.formatSpyMsg("remove"));
 				}else{
 					spys.add(player);
 
 					Startup.getPlugin().getConfig().set(player.getUniqueId().toString() + ".settings.cmspy", true);
-					super.saveConfig();
-					super.reloadConfig();
+					FileOps.saveConfig();
+					FileOps.reloadConfig();
 
 					cs.sendMessage(super.formatSpyMsg("add"));
 				}

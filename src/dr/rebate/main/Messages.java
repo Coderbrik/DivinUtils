@@ -1,6 +1,6 @@
 package dr.rebate.main;
 
-public class Formatting extends FileOps {
+public class Messages {
 	String notify = Startup.getPlugin().getConfig().getString("Notify").replaceAll("(&([a-f0-9]))", "\u00A7$2");
 	String messageColor = Startup.getPlugin().getConfig().getString("MsgColor").replaceAll("(&([a-f0-9]))", "\u00A7$2");
 	String NameColor = Startup.getPlugin().getConfig().getString("NameColor").replaceAll("(&([a-f0-9]))", "\u00A7$2");
@@ -33,5 +33,9 @@ public class Formatting extends FileOps {
 	public String formatCmMsg(String cmExecuted, String whoExecuted) {
 		String msg = commandSpy + " " + NameColor + whoExecuted + messageColor + ": " + NameColor + cmExecuted + messageColor + ".";
 		return msg;
+	}
+	
+	public String returnNoPlayer() {
+		return notify + messageColor + "You are not allowed to check offline players time due to " + NameColor + "Data Loss";
 	}
 }
