@@ -1,0 +1,15 @@
+name: Divinium
+main: dr.rebate.main.Startup
+description: Custom Coded Plugin
+version: 1.12
+author: Daco
+
+commands:
+  Playtime:
+    description: Used to check a player's playtime on a server.
+    permission: div.playtime
+    usage: /playtime[<player>]
+  Commandspy:
+    description: Used to spy on players commands.
+    permission: div.cmspy
+    usage: /commandspy

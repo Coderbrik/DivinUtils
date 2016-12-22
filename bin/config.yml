@@ -1,0 +1,5 @@
+#Default Configuration for main config.
+NameColor: '&b'
+MsgColor: '&7'
+Notify: '&7[&b!&7]'
+CmResultPrefix: '&7[&bCS&7]'
