@@ -22,6 +22,7 @@ public class CommandSpy extends Messages implements CommandExecutor, Listener {
 	FileConfiguration conf = Startup.getPlugin().getConfig();
 	List<Player>spys = new ArrayList<Player>();
 
+	@Override
 	public boolean onCommand(CommandSender cs, Command cm, String alias, String[] args) {
 		if(cs instanceof Player) {
 			Player player = (Player) cs;
@@ -33,7 +34,7 @@ public class CommandSpy extends Messages implements CommandExecutor, Listener {
 					FileOps.saveConfig();
 					FileOps.reloadConfig();
 
-					cs.sendMessage(super.formatSpyMsg("remove"));
+					cs.sendMessage(Startup.getMessages().getCommandSpyActionMessage("remove"));
 				}else{
 					spys.add(player);
 
@@ -41,7 +42,7 @@ public class CommandSpy extends Messages implements CommandExecutor, Listener {
 					FileOps.saveConfig();
 					FileOps.reloadConfig();
 
-					cs.sendMessage(super.formatSpyMsg("add"));
+					cs.sendMessage(Startup.getMessages().getCommandSpyActionMessage("add"));
 				}
 			}
 		}
@@ -56,7 +57,7 @@ public class CommandSpy extends Messages implements CommandExecutor, Listener {
 
 		for(int i = 0; i < spysSize; i ++) {
 			if(!whoExecuted.equalsIgnoreCase(spys.get(i).getName())) {
-				spys.get(i).sendMessage(super.formatCmMsg(cmExecuted, whoExecuted));
+				spys.get(i).sendMessage(Startup.getMessages().getFormattedCommandSpyMsg(cmExecuted, whoExecuted));
 			}
 		}
 	}
@@ -70,7 +71,8 @@ public class CommandSpy extends Messages implements CommandExecutor, Listener {
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		if(conf.getBoolean(e.getPlayer().getUniqueId().toString() + ".settings.cmspy")) {
 			spys.add(e.getPlayer());
-			e.getPlayer().sendMessage(super.formatSpyMsg("add"));
+			
+			e.getPlayer().sendMessage(Startup.getMessages().getCommandSpyActionMessage("add"));
 		}
 	}
 }

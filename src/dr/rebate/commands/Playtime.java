@@ -7,12 +7,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import dr.rebate.main.Arithmetic;
-import dr.rebate.main.Messages;
+import dr.rebate.main.Startup;
 
-public class Playtime extends Messages implements CommandExecutor {
+public class Playtime implements CommandExecutor {
 
 	Player player;
+	@Override
 	public boolean onCommand(CommandSender cs, Command cm, String alias, String[] args) {
 		if(cs instanceof Player) {
 			if(cm.getName().equalsIgnoreCase("playtime")) {
@@ -31,10 +31,10 @@ public class Playtime extends Messages implements CommandExecutor {
 		if(Bukkit.getServer().getPlayer(playername) != null) {
 			Player player = Bukkit.getServer().getPlayer(playername);
 
-			time = Arithmetic.convertTicksToTimeUnits(player.getStatistic(Statistic.PLAY_ONE_TICK) / 23);
-			time = super.formatPlaytime(time, playername, whoAsked); 
+			time = Startup.getAlgorithms().convertTicksToTimeUnits(player.getStatistic(Statistic.PLAY_ONE_TICK) / 23);
+			time = Startup.getMessages().getFormattedPlaytime(time, playername, whoAsked);
 		}else{
-			time = super.returnNoPlayer();
+			time = Startup.getMessages().getNoPlayerMessage();
 		}
 		return time;
 	}

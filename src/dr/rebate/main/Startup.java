@@ -11,6 +11,8 @@ import dr.rebate.staff.CommandSpy;
 public class Startup extends JavaPlugin {
 
 	private static Startup plugin;
+	private static Messages messages;
+	private static Arithmetic algorithms;
 
 	@Override
 	public void onEnable() {
@@ -48,4 +50,17 @@ public class Startup extends JavaPlugin {
 	public static void setPlugin(Startup plugin) {
 		Startup.plugin = plugin;
 	}
+	public static Messages getMessages() {
+		return messages;
+	}
+	public static void setMessages(Messages messages) {
+		Startup.messages = messages;
+	}
+	public static Arithmetic getAlgorithms() {
+		return algorithms;
+	}
+	public static void setAlgorithms(Arithmetic algorithms) {
+		Startup.algorithms = algorithms;
+	}
+	
 }
